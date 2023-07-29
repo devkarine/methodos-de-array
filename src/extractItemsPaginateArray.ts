@@ -10,5 +10,15 @@ import { Ientrydata, PageItems } from '../types/Ientrydata';
  * @return {*}  {PageItems[]}
  */
 export const extractItemsPaginateArray = (data: Ientrydata): PageItems[] => {
-  return [];
+  const extractsItems = [];
+
+  const { pages } = data;
+
+  for (const page of pages) {
+    const { items } = page;
+
+    extractsItems.push(...items);
+  }
+
+  return extractsItems;
 };

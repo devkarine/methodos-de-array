@@ -14,5 +14,10 @@ export const mergeAndRemoveDuplicatesFromArray = <T>(
   leftArray: T[],
   rightArray: T[],
 ): T[] => {
-  return [];
+  const mergeArray = leftArray.concat(rightArray);
+  const uniqueArray = mergeArray.filter(
+    (item, index) => mergeArray.indexOf(item) === index,
+  );
+
+  return uniqueArray;
 };

@@ -13,6 +13,18 @@
  * @param {string[]} nameArray
  * @return {string}
  */
-export const nameArrayToString = (nameArray: string[]) => {
-  return '';
+export const nameArrayToString = (nameArray: string[]): string => {
+  const length = nameArray.length;
+
+  if (length === 0) {
+    return '';
+  } else if (length === 1) {
+    return nameArray[0];
+  } else if (length === 2) {
+    return nameArray.join(' & ');
+  } else {
+    const allButLastTwoNames = nameArray.slice(0, length - 2).join(', ');
+    const lastTwoNames = nameArray.slice(length - 2).join(' & ');
+    return `${allButLastTwoNames}, ${lastTwoNames}`;
+  }
 };

@@ -15,5 +15,26 @@ interface MostFrequentType {
 export const findFirstMostFrequent = (
   inputArray: Array<string | number>,
 ): MostFrequentType => {
-  return { value: '', occurrences: 0 };
+  const count: { [key: string]: number } = {};
+
+  for (const item of inputArray) {
+    if (count[item]) {
+      count[item]++;
+    } else {
+      count[item] = 1;
+    }
+  }
+
+  let value: string | number = inputArray[0];
+  let occurrences = 1;
+  console.log(value);
+
+  for (const item of inputArray) {
+    if (count[item] > occurrences) {
+      value = item;
+      occurrences = count[item];
+    }
+  }
+
+  return { value, occurrences };
 };
